@@ -8,33 +8,58 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 249 250 251;
+    --foreground: 15 23 42;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 255 255 255;
+    --card-foreground: 15 23 42;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 255 255 255;
+    --popover-foreground: 15 23 42;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 59 130 246;
+    --primary-foreground: 255 255 255;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 241 245 249;
+    --secondary-foreground: 51 65 85;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 248 250 252;
+    --muted-foreground: 100 116 139;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 241 245 249;
+    --accent-foreground: 15 23 42;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 239 68 68;
+    --destructive-foreground: 255 255 255;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 226 232 240;
+    --input: 226 232 240;
+    --ring: 59 130 246;
+
+    /* Safety App Specific Colors */
+    --emergency: 239 68 68;
+    --emergency-foreground: 255 255 255;
+    --warning: 245 158 11;
+    --warning-foreground: 255 255 255;
+    --success: 34 197 94;
+    --success-foreground: 255 255 255;
+    --safe-zone: 34 197 94;
+    --moderate-zone: 245 158 11;
+    --danger-zone: 239 68 68;
+
+    /* Gradients */
+    --gradient-emergency: linear-gradient(135deg, 239 68 68, 220 38 38);
+    --gradient-primary: linear-gradient(135deg, 59 130 246, 37 99 235);
+    --gradient-safe: linear-gradient(135deg, 34 197 94, 22 163 74);
+
+    /* Shadows */
+    --shadow-emergency: 0 10px 30px -10px hsl(239 68 68 / 0.3);
+    --shadow-primary: 0 10px 30px -10px hsl(59 130 246 / 0.3);
+    --shadow-elevated: 0 20px 25px -5px hsl(0 0 0 / 0.1), 0 10px 10px -5px hsl(0 0 0 / 0.04);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --pulse-emergency: emergency-pulse 2s infinite;
 
     --radius: 0.5rem;
 
@@ -101,5 +126,21 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* Emergency pulse animation */
+  @keyframes emergency-pulse {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.05);
+    }
+  }
+
+  .emergency-pulse {
+    animation: emergency-pulse 2s infinite;
   }
 }
